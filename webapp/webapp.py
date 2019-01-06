@@ -4,6 +4,7 @@ import pickle
 
 BUCKET_NAME = 'lambda-ml-bucket1'
 MODEL_FILE_NAME = 'model.pkl'
+target_name = {0: 'setosa', 1: 'versicolor', 2: 'virginica'}
 
 app = Flask(__name__)
 
@@ -30,13 +31,13 @@ def index():
         prediction = model.predict(data).tolist()
 
         # Respond with prediction result
-        result = {'prediction': prediction}    
+        result = {'prediction': target_name[prediction[-1]]}   
     
         #return json.dumps(result)
         return render_template('main.html',
                                      original_input={'number1': number1,
                                                      'number2': number2},
-                                     result=prediction,
+                                     result=result,
                                      )
 
 # To load the model from s3

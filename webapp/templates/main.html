@@ -14,15 +14,15 @@ form {
 </style>
 
 <head>
-    <title>Bike Usage Model</title>
+    <title>Iris Dataset</title>
 </head>
 <form action="{{ url_for('index') }}" method="POST">
     <fieldset>
         <legend>Input values:</legend>
-        number1:
+        sepal length (cm):
         <input name="number1" type="number" step="0.01" required>
         <br>
-        <br> number2:
+        <br> sepal width (cm):
         <input name="number2" type="number" step="0.01" required>
         <br>
         <input type="submit">
@@ -35,8 +35,8 @@ form {
             <b>{{ variable }}</b> : {{ value }}
         {% endfor %}
         <br>
-        <br> Predicted number of bikes in use:
-           <p style="font-size:50px">{{ result }}</p>
+        <br> Predicted type of Iris:
+           <p style="font-size:50px">{{ result.prediction }}</p>
     {% endif %}
 </div>
 
